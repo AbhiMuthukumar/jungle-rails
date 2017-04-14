@@ -1,0 +1,17 @@
+Hello there,
+
+Greetings!
+
+You have successfully placed your order in Jungle.  Below are the order details.
+
+Order ID - <%=@order.id%>
+
+Items
+
+<% @order.line_items.each do |item| %>
+  <% if product = Product.find_by(id: item.product_id) then %>
+    Name: <%=product.name%> | Unit Price: <%= humanized_money_with_symbol product.price%> | Quantity: <%=item.quantity%> | Price: <%=humanized_money_with_symbol item.total_price%>
+  <% end %>
+<% end %>
+
+Total Amount Paid: <%= humanized_money_with_symbol @order.total%>
