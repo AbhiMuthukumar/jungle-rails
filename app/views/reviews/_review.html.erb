@@ -1,0 +1,14 @@
+<dl class="dl-horizontal">
+  <dt><%= author(review.user_id).name%></dt>
+  <dd>
+  <%=review.description%> <br>
+  <em> Rating: </em> <%= review.rating %>
+  <% if (author(review.user_id) == current_user) then %>
+      &nbsp; &nbsp; <%= link_to product_review_remove_review_path(product_id: review.product_id, review_id: review.id), method: :delete do %>
+        remove
+      <% end %>
+  <% end %>
+
+  </dd>
+
+</dl>

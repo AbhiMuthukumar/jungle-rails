@@ -8,10 +8,11 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if (user.save)
+      flash[:notice] = nil
       session[:user_id] = user.id
       redirect_to '/'
     else
-      puts user.errors.messages
+      flash[:notice] = user.errors.full_messages
       render '/users/new'
     end
   end

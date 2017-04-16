@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create] do
+      delete :remove_review
+    end
+  end
   resources :categories, only: [:show]
 
   resource :cart, only: [:show] do

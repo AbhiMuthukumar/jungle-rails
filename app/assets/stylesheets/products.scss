@@ -64,6 +64,11 @@ main section.categories-show {
         opacity: 0.5;
       }
 
+      aside.rating {
+        position: absolute;
+        bottom: 65px;
+      }
+
       &:hover {
 
         border-color: #999;
@@ -83,6 +88,15 @@ main section.products-show {
     img.main-img {
       max-width: 100%;
     }
+  }
+
+  .rating-option {
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .notice {
+    color:red;
   }
 }
 

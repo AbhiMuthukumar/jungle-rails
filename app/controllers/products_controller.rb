@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # flash[:notice] = nil
     @product = Product.find params[:id]
+
   end
 
 end

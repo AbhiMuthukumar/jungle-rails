@@ -132,5 +132,36 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create!({
+  name: 'Abhi',
+  email: 'abhi.muthukumar@gmail.com',
+  password: 'abhi'
+})
+
+User.create!({
+  name: 'Ashwin',
+  email: 'ashwin@gmail.com',
+  password: 'ashwin'
+})
+
+p1 = Product.find(12)
+
+p1.reviews.create!({
+  user_id: 1,
+  description: 'Amazing Shelf',
+  rating: 5
+ })
+
+p1.reviews.create!({
+  user_id: 2,
+  description: 'Looks great and very useful!',
+  rating: 4
+})
+
+p1.reviews.create!({
+  user_id: 1,
+  description: 'A different and rare one!',
+  rating: 4
+})
 
 puts "DONE!"

@@ -10,4 +10,5 @@ module ApplicationHelper
   def authorize
     redirect_to '/login' unless current_user
   end
+
 end

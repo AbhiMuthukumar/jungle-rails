@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  include ApplicationHelper
+
   def show
     @order = Order.find(params[:id])
   end
@@ -10,8 +12,10 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
-      Receipt.receipt_email(User.find_by(id: session[:user_id]).email, order).deliver_now
-      redirect_to order, notice: 'Your Order has been placed.'
+      if current_user
+        Receipt.receipt_email(User.find_by(id: session[:user_id]).email, order).deliver_now
+      end
+      redirect_to order
     else
       redirect_to cart_path, error: order.errors.full_messages.first
     end

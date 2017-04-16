@@ -22,10 +22,41 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <br>
+          <% if (current_user) then %>
+            <dt></dt>
+            <dd>
+              <div>
+                <h5> <em> write a review.. </em></h5>
+              </div>
+            </dd>
+            <dt></dt>
+            <dd>
+              <%= form_for [@product, Review.new] do |form| %>
+
+                <% if flash[:notice] %>
+                  <% flash[:notice].each do |error| %>
+                    <div class="notice"><%= error %></div>
+                  <% end %>
+                <% end %>
+
+                  <p>
+                    <%= form.text_area :description, cols: "60", rows: "4" %>
+                    <%= form.label :Rating, {}, {class: "rating-option"} %> &nbsp;
+                    <%= form.select :rating, [["1", 1], ["2", 2], ["3", 3], ["4", 4], ["5", 5]], {}, {class: "rating-option"} %>
+                  </p>
+                  <p>
+                    <%= form.submit %>
+                  </p>
+                <% end %>
+            </dd>
+          <% end %>
+          <% @total_rating = 0 %>
+          <dt> <h4> <em> <%= pluralize(@product.reviews.count,"Review") %></em> </h4> </dt>
+          <dd> <h4> <em> Average Rating: <%=@product.reviews.average(:rating)%> </em> </h4> </dd>
         </dl>
+        <%= render @product.reviews.order(created_at: :desc) %>
       </div>
     </div>
-
   </article>
-
 </section>

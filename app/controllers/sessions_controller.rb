@@ -5,12 +5,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      flash[:notice] = nil
+      session[:user_id] = @user.id
       redirect_to products_path
     else
-      redirect_to login_path
+      flash[:notice] = ["Incorrect Email ID or Password!"]
+      render "/sessions/new"
     end
   end
 

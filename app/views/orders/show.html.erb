@@ -3,6 +3,9 @@
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
+  <% if current_user %>
+    <h4> Email receipt for your order has been sent to "<em><%=current_user.email %> </em>" </h4>
+  <% end %>
 
   <div class="panel panel-default items">
     <table class="table table-bordered">
