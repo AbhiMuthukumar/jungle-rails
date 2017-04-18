@@ -134,13 +134,13 @@ cat3.products.create!({
 
 User.create!({
   name: 'Abhi',
-  email: 'abhi.muthukumar@gmail.com',
+  email: 'Abhi.muthukumar@gmail.com',
   password: 'abhi'
 })
 
 User.create!({
   name: 'Ashwin',
-  email: 'ashwin@gmail.com',
+  email: 'Ashwin@gmail.com',
   password: 'ashwin'
 })
 
