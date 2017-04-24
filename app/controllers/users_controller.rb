@@ -5,15 +5,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    @user = User.new(user_params)
 
-    if (user.save)
-      flash[:notice] = nil
-      session[:user_id] = user.id
+    if (@user.save)
+      # flash[:notice] = nil
+      session[:user_id] = @user.id
       redirect_to '/'
     else
-      flash[:notice] = user.errors.full_messages
-      render '/users/new'
+      # flash[:notice] = user.errors.full_messages
+      render :new
     end
   end
 

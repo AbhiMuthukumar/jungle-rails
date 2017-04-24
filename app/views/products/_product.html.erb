@@ -8,7 +8,7 @@
   <p class="description">
     <%= product.description %>
   </p>
-  <aside class="rating"> Rating - <%=product.reviews.average(:rating) ? product.reviews.average(:rating) : 0%> </aside>
+  <aside class="rating"> Rating - <%=product.reviews.average(:rating) ? product.reviews.average(:rating).round(1) : 0%> </aside>
   <footer class="actions">
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
